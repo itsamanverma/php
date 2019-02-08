@@ -53,7 +53,7 @@ class inventoryDataManagement extends inventory
         
     }
  
-    function print($jsonData){
+        function print($jsonData){
         $str = array('Rice','Pulses','Wheat');
         // for($i=0;$i<sizeof($str);$i++){
         //     $inven = $jsonData["$str[$i]"];
