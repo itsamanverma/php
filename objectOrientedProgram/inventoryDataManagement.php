@@ -53,17 +53,12 @@ class inventoryDataManagement extends inventory
     }
  
         function print($jsonData){
-        $str = array('Rice','Pulses','Wheat');
-        // for($i=0;$i<sizeof($str);$i++){
-        //     $inven = $jsonData["$str[$i]"];
- 
-            foreach($jsonData as $groc){
+                foreach($jsonData as $groc){
                 $name = $groc['name'];
                 $weight = $groc['weight'];
                 $price = $groc['price'];
                 printf('Name : %s '.PHP_EOL.'weight : %d'.PHP_EOL. 'price : %d '.PHP_EOL.'inventaoryTotalPrice : %d  '.PHP_EOL.PHP_EOL, $name,$weight,$price, $weight*$price);
             }
-        // }
     }
 }
 $file = "jsonFile.json";
