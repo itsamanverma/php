@@ -15,7 +15,7 @@ class inventoryDataManagement extends inventory
     /**
       * create the to read the data from json  
       */
-    function readJson($file){
+        function readJson($file){
         $fileStr = file_get_contents($file);
         $jsonData = json_decode($fileStr,true);
         return $jsonData;
@@ -23,7 +23,7 @@ class inventoryDataManagement extends inventory
       /**
        * create the function to write the json to the file 
        */
-    function writeJson($file){
+        function writeJson($file){
         $inventory = new inventoryDataManagement();
         echo "enter no of inventories\n";
         $no = Utility::getInt();
