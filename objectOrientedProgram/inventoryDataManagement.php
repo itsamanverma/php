@@ -40,8 +40,7 @@ class inventoryDataManagement extends inventory
             echo "enter price\n";
             $price = Utility::getDouble();
             $inventory->setPrice($price);
-            $jData[] = array('name'=>$inventory->getName(),'weight'=>$inventory->getWeight(),'price'=>$inventory->getPrice())   
-                        ;     
+            $jData[] = array('name'=>$inventory->getName(),'weight'=>$inventory->getWeight(),'price'=>$inventory->getPrice());     
             $data = json_encode($jData);    
             file_put_contents($file,$data);
             
@@ -62,7 +61,7 @@ class inventoryDataManagement extends inventory
                 $name = $groc['name'];
                 $weight = $groc['weight'];
                 $price = $groc['price'];
-                printf('Name : %s '.PHP_EOL.'weight : %d'.PHP_EOL. 'price : %d '.PHP_EOL.'value : %d  '.PHP_EOL.PHP_EOL, $name,$weight,$price, $weight*$price);
+                printf('Name : %s '.PHP_EOL.'weight : %d'.PHP_EOL. 'price : %d '.PHP_EOL.'inventaoryTotalPrice : %d  '.PHP_EOL.PHP_EOL, $name,$weight,$price, $weight*$price);
             }
         // }
     }
