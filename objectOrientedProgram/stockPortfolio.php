@@ -10,12 +10,12 @@ require('Utility.php');
 require('stockReport.php');
 class StockPortfolio extends Stock
 {
-    /* create the function to write the data to json file */
-    function writeJson($file) {
-        $stock = new Stock();
-        echo "enter number of stocks\n";
-        $no = Utility::getInteger();
-        for ($i = 0; $i < $no; $i++) {
+            /* create the function to write the data to json file */
+            public function writeJson($file) {
+            $stock = new Stock();
+            echo "enter number of stocks\n";
+            $no = Utility::getInteger();
+            for ($i = 0; $i < $no; $i++) {
             echo "Enter the Stock " . ($i + 1) . " details\n\n";
             echo "enter the stock name\n";
             $stockName = Utility::String_input();
@@ -30,23 +30,23 @@ class StockPortfolio extends Stock
             $jData = json_encode($obj);
             $jStr = file_put_contents($file, $jData);
             // $stck->writeJson($file);
-        }
-    }
+               }
+             } 
  
-    /* create the function to read the data to json file */
-    public function readJson($file)
-    {
+        /* create the function to read the data to json file */
+        public function readJson($file)
+        {
         $fileStr = file_get_contents($file);
         $jsonData = json_decode($fileStr, true);
         return $jsonData;
-    }
+        }
  
-    /*create the function to printData */
-    public function printReport($jsondata)
-    {
-        $totalStockValue = 0;
-        echo "STOCK REPORT \n\n";
-        foreach ($jsondata as $stock1) {
+       /*create the function to printData */
+       public function printReport($jsondata)
+        {
+            $totalStockValue = 0;
+            echo "STOCK REPORT \n\n";
+            foreach ($jsondata as $stock1) {
             $name = $stock1['stock name'];
             $noShares = $stock1['no of shares'];
             $price = $stock1['share price'];
@@ -55,7 +55,7 @@ class StockPortfolio extends Stock
             $totalStockValue += $shareValue;
             printf('Name : %s ' . "\t". 'number of shares : %d' . "\t" . 'price : %d ' ."\t". 'value : %d  ' . PHP_EOL, $name, $noShares, $price, $noShares * $price);
         }
-        echo "Total stock value : " . $totalStockValue . "\n";
+            echo "Total stock value : " . $totalStockValue . "\n";
     }
  
 }
