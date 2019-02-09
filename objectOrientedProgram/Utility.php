@@ -73,4 +73,17 @@ class Utility
         }
         return $str;
     }
+    /**
+     * to get integer as input
+     */
+    public static function getInteger()
+    {
+        fscanf(STDIN ,"%s", $val);
+        while(!is_numeric($val) ||$val > (int)$val)
+        {
+          echo("enter the valin integer\n");
+          fscanf(STDIN ,"%s",$val);
+        }
+        return $val;
+    }
 }
