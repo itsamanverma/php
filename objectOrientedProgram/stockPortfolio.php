@@ -33,17 +33,17 @@ class StockPortfolio extends Stock
                }
              } 
  
-        /* create the function to read the data to json file */
-        public function readJson($file)
-        {
-        $fileStr = file_get_contents($file);
-        $jsonData = json_decode($fileStr, true);
-        return $jsonData;
-        }
+            /* create the function to read the data to json file */
+            public function readJson($file)
+             {
+            $fileStr = file_get_contents($file);
+            $jsonData = json_decode($fileStr, true);
+            return $jsonData;
+             }
  
-       /*create the function to printData */
-       public function printReport($jsondata)
-        {
+             /*create the function to printData */
+             public function printReport ($jsondata)
+            {
             $totalStockValue = 0;
             echo "STOCK REPORT \n\n";
             foreach ($jsondata as $stock1) {
@@ -54,9 +54,9 @@ class StockPortfolio extends Stock
  
             $totalStockValue += $shareValue;
             printf('Name : %s ' . "\t". 'number of shares : %d' . "\t" . 'price : %d ' ."\t". 'value : %d  ' . PHP_EOL, $name, $noShares, $price, $noShares * $price);
-        }
+            }
             echo "Total stock value : " . $totalStockValue . "\n";
-    }
+           }
  
 }
 $stockReport = new StockPortfolio();
