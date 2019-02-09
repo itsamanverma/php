@@ -15,7 +15,7 @@ class inventoryDataManagement extends inventory
     /**
       * create the to read the data from json  
       */
-        function readJson($file){
+        public function readJson($file){
         $fileStr = file_get_contents($file);
         $jsonData = json_decode($fileStr,true);
         return $jsonData;
@@ -23,7 +23,7 @@ class inventoryDataManagement extends inventory
       /**
        * create the function to write the json to the file 
        */
-        function writeJson($file){
+        public function writeJson($file){
         $inventory = new inventoryDataManagement();
         echo "enter no of inventories\n";
         $no = Utility::getInt();
@@ -51,12 +51,12 @@ class inventoryDataManagement extends inventory
         $inventory->print($jdata);
         
     }
- 
+        /* create the function to print the json data in jsonfile */
         function print($jsonData){
-                foreach($jsonData as $groc){
-                $name = $groc['name'];
-                $weight = $groc['weight'];
-                $price = $groc['price'];
+                foreach($jsonData as $grocery){
+                $name = $grocery['name'];
+                $weight = $grocery['weight'];
+                $price = $grocery['price'];
                 printf('Name : %s '.PHP_EOL.'weight : %d'.PHP_EOL. 'price : %d '.PHP_EOL.'inventaoryTotalPrice : %d  '.PHP_EOL.PHP_EOL, $name,$weight,$price, $weight*$price);
             }
     }
