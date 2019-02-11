@@ -42,7 +42,7 @@
      }
      }
 
-   /**
+    /**
      * finction to give the deck of cards as 2d array
      * @return arr the 2d array of the deck 
      */

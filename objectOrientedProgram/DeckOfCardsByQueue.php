@@ -1,4 +1,12 @@
 <?php
+/**********
+ *Write a Program DeckOfCards.java , to initialize deck of cards having suit ("Clubs",
+  "Diamonds", "Hearts", "Spades") & Rank ("2", "3", "4", "5", "6", "7", "8", "9", "10",
+  "Jack", "Queen", "King", "Ace").
+ *@authour amanverma
+ *@version 2.0
+ *Date 08/01/2019
+ */
 require('Utility.php');
 require('Queue.php');
  
