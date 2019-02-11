@@ -86,4 +86,47 @@ class Utility
         }
         return $val;
     }
+
+    /**
+     * function to stored the normal combination
+     */
+    public static function storeCards($cards,$rank,$suits){
+    
+        for($i=0;$i<sizeof($suits);$i++){
+            for($j=0;$j<sizeof($rank);$j++){
+                $cards[$i][$j] =$rank[$j].",".$suits[$i];
+            }
+        }
+        return $cards;
+    }
+     /**
+      * function to suffled the card 
+      */
+    public static function suffleCards($cardArr,$suits,$rank){
+        for($i=0;$i<sizeof($cards);$i++){
+            for($j=0;$j<sizeof($cards[$i]);$j++){
+                $rand1 = rand(0,3);
+                $rand2 = rand(0,11);
+               
+                $temp = $cards[$rand1][$rand2];
+                $cards[$rand1][$rand2]= $cards[$i][$j];
+                $cards[$i][$j]= $temp;
+            }
+        }
+        return $cards;
+    }
+     /**
+      * create the function to print the suffled Cards
+      */
+    public static function printCards($cards){
+        echo "after suffling \n";
+        
+        for($i=0;$i<sizeof($cards);$i++){
+            echo "Player ".($i+1)." : [";
+            for($j=0;$j<sizeof($cards[$i]);$j++){
+                echo $cards[$i][$j]." ";
+            }
+            echo "]\n\n";
+        }
+    }
 }
