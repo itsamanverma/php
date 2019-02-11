@@ -94,7 +94,7 @@ class Utility
 
         for ($i = 0; $i < sizeof($suits); $i++) {
             for ($j = 0; $j < sizeof($rank); $j++) {
-                $cards[$i][$j] = $rank[$j] . "," . $suits[$i];
+                $cards[$i][$j] = $rank[$j] . " " . $suits[$i];
             }
         }
         return $cards;
@@ -102,7 +102,7 @@ class Utility
     /**
      * function to suffled the card 
      */
-    public static function suffleCards($cardArr, $suits, $rank)
+    public static function suffleCards($cards, $suits, $rank)
     {
         for ($i = 0; $i < sizeof($cards); $i++) {
             for ($j = 0; $j < sizeof($cards[$i]); $j++) {
@@ -150,31 +150,6 @@ class Utility
             }
         }
     //print_r($deck);
-        return $deck;
-    }
-    /**
-     * shuffle the deck of cards and return it
-     * @param deck the 2d array containing deck of cards
-     * @return deck the shuffled deck of cards
-     */
-    public static function cardSuffled($deck)
-    {
-        for ($i = 0; $i < count($deck); $i++) {
-            for ($j = 0; $j < count($deck[$i]); $j++) {
-                $r1 = rand(0, 3);
-                $c1 = rand(0, 12);
-                $r = rand(0, count($deck));
-                $r2 = rand(0, 3);
-                $r = rand(0, count($deck));
-                $c2 = rand(0, 12);
-                $r = rand(0, count($deck));
-                $temp = $deck[$r1][$c1];
-                $r = rand(0, count($deck));
-                $deck[$r1][$c1] = $deck[$r2][$c2];
-                $deck[$r2][$c2] = $temp;
-            }
-        }
-//    / print_r($deck);
         return $deck;
     }
 
