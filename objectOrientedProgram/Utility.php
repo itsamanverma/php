@@ -159,8 +159,8 @@ class Utility
             echo "No | Stock Name | Share Price | No. Of Shares | Stock Price \n";
             $i = 0;
  
-            //looping over and printing the account details
-            for ($i=1; $i <count($account) ; $i++) 
+            /*looping over and printing the account details*/
+            for ($i=1; $i<count($account) ; $i++) 
             {
                 $key = $account[$i];
                 echo sprintf("%-2u | %-10s | rs %-8u | %-13u | rs %u", $i, $key->name, $key->price, $key->quantity, ($key->quantity * $key->price)) . "\n";
@@ -174,7 +174,7 @@ class Utility
             $total = 0;
             echo "Stock Name | Per Share Price | No. Of Shares | Stock Price\n";
  
-            //looping over and printing the account details and the account balance
+            /*looping over and printing the account details and the account balance*/
             for ($i=1; $i < count($account) ; $i++) 
             {
                 $key = $account[$i];
@@ -190,15 +190,15 @@ class Utility
           public static function buy($account)
            {
             //var_dump($account);
-            //list var to store the list the stock to purachase from
+            /* list var to store the list the stock to purachase from */
             $list = Utility::printStockList();
-            //asking use rfor input
-            echo "Enter No with Stock To Buy : ";
-            //var ch to store stock to buy
+            /* user decide the which stock share he/she want to buy as per key */
+            echo "Enter No with Stock To Buy :";
+            /* variable ch to store stock which is user buy*/
             $ch = Utility::validInt(Utility::getInteger(), 1, 8);
             echo $list[$ch-1]->name . " selected!\n";
             echo "Enter No Of Shares To Buy of " . $list[$ch-1]->name . " : ";
-            //amount to store the no of shares to buy
+            /* updated amount to store & update the no of shares to buy */
             $amnt = Utility::validInt(Utility::getInteger(), 0, $list[$ch-1]->Quantity);
             if($account[0]->account<($list[$ch-1]->price*$amnt))
             {
@@ -207,11 +207,11 @@ class Utility
             }
             $list[$ch-1]->Quantity -= $amnt;
             Utility::saveList($list);
-            //getting the stock from the list
+            /*getting the stock from the list */
             $stock = $list[$ch - 1];
-            //creating new stock
+            /*creating new stock to if whatever the stock share not available in the stock list */
             $stock = new StockData($stock->name, $stock->price, $amnt);
-            //adding the stock to the account if already in the list and return
+            /* adding the stock to the account if already in the list and return*/
             $account[0]->account-= $amnt;
             for ($i = 1; $i < count($account); $i++) 
             {
@@ -223,7 +223,7 @@ class Utility
                     return $account;
                 }
             }
-            //or else adds the new stack the end pf the list
+            /* or else adds the new stack the end pf the list*/
             $account[] = $stock;
             echo "Bought $stock->quantity " . "$stock->name shares successfully";
             //waiting for user to see the result
