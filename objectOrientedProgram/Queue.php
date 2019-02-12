@@ -1,144 +1,102 @@
 <?php
 /**********
- * Implementation of Queue using Node 
- *@authour amanverma
- *@version 2.0
- *Date 11/01/2019
+ * Data structure queue with its method implemented on linked list 
+ * @authour amanverma
+ * @version 2.0
+ * Date 11/01/2019
  ****************************************************************************************/
-class QNode
-{
-    public $data;
-    public $next;
 
-    /**
-     * Create the Construct Function
-     * @param $data shows the data of Node  
-     */
-    function __construct($data)
-    {
-        $this->data = $data;
-        $this->next = null;
-    }
-}
+require_once ('E.php');
 class Queue
-{
-    public $front;
-    public $rear;
-    public static $size = 0;
+{ 
+  public $front;
+  public $rear;
+  public $size; 
+  
+    /**
+     * Constructor function to initialize the variable at runtime 
+     **/
+  public function __construct()
+  {
+        $this->front = null;
+        $this->rear = null;
+        $this->size = null;
+  
+  }
+  
+  /**
+     * Function to check if the queue is empty or not
+     * @return boolean true of false
+     */
+  public function isEmpty()
+  {
+    return $this->front == null;
+  }
+  
+    /**
+     * function to push data at the end of the queue
+     * @param item the item to be pushed
+     */
+     public function enqueue($value)
+    {
+    $oldback = $this->back;
+    /* last pointing to new node */
+    $this->back = new Element(); 
+    $this->back->value = $value;
+    if($this->isEmpty())
+    {
+      //if empty both first and last point to the new node
+      $this->front = $this->back;
+      $this->size++; 
+    }
+    else
+    {
+      //else last point to new node
+      $oldback->next = $this->back;
+      $this->size++; 
+    }
+  }
+  
+    /**
+     * Function to remove the item from the start of the list
+     */
+  public function dequeue()
+  {
+    if($this->isEmpty())
+    {
+      echo "the queue is empty\n";
+      return null; 
+    }
+    //removing first value and modifying queue 
+    $removedValue = $this->front->value;
+    $this->front = $this->front->next;
+    $this->size--;
+    return $removedValue;
+  }
 
-    /**
-     * Create the Construct Function
+  /**
+     * Function to check the size of queue
+     * @return size the size of the queue
      */
-    public function __construct()
-    {
-        $this->front = $this->rear = null;
-    }
-    /**
-     * create a function to add item in the Queue
-     * @param $item shows the Data of node 
-     */
-    public function enqueue($data)
-    {
-        $new_node = new QNode($data);
-        /**
-         * checking the Queue is empty or not
-         */
-        if ($this->isEmpty()) {
-            $this->front = $this->rear = $new_node;
-        } else {
-            $this->rear->next = $new_node;
-            $this->rear = $new_node;
-        }
-        /**
-         * increases the size by adding the elements
-         */
-        self::$size++;
-    }
+  public function size()
+  {
+    return $this->size;
+  }
 
-    /**
-     * create a Function to check that Queue is Empty or Not 
-     */
-    public function isEmpty()
+  public function getData()
+  {
+    $temp = $this->front;
+    $str = "";
+    while($temp)
     {
-        if ($this->front == null)
-            return true;
-    }
-    /**
-     * create a function to remove the item from Queue
-     */
-    public function deQueue()
-    {
-        if (!$this->isEmpty()) {
-            $val = $this->front->data;
-            $this->front = $this->front->next;
-        } else {
-            echo ("queue is UnderFlow..!");
-        }
-        if ($this->front == null) {
-            $rear = null;
-        }
-        self::$size--;
-        return $val;
-    }
-    /**
-     * create a function to known the Size of Queue
-     */
-    public function size()
-    {
-        return self::$size;
-    }
-    /**
-     * create the function to display the Queue 
-     */
-    public function display()
-    {
-        $temp = $this->front;
-        while ($temp != null) {
-            echo $temp->data . "\n";
-            $temp = $temp->next;
-        }
-    }
-    /**
-     * create a function to getdata similar to toString method 
-     */
-    public function getData()
-    {
-        $str = "";
-        $current = $this->front;
-        while ($current != null) {
-            $str = $str . $current->data;
-            if ($current->next != null) {
-                $str = $str . "->";
-            }
-        }
-        $current = $current->next;
-        return $str;
-    }
-    /**
-     * create a function to show the pee valure of Queue
-     */
-    public function peek()
-    {
-        return $this->front->data;
-    }
-    /**
-     * create the function remove or delete the date using Queue
-     * in CalendarByQueue 
-     */
-    public function deQueue1()
-    {
-        if(!$this->isEmpty())
+        $str = $str.$temp->value;
+        if($temp->next!=null)
         {
-          $val = $this->front->data();
-          $this->front = $this->front->next;
+            $str = $str." ";
         }
-        else{
-            echo("Queue is underFlow..!");
-        }
-        if($this->front == null)
-        {
-            $rear= null;
-        }
-        return $val;
+        $temp = $temp->next;
     }
+    return $str;
+  }
 }
+?>

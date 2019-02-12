@@ -1,18 +1,20 @@
 <?php
 /**
- * Node class 
- * @authour amanverma
- * @date -11/02/2019
+ * @purpose-create the Node class to stored the data & next node address
+ * @authuor -amanverma
+ * date - 10/02/2019
  */
 class Node
 {
-   public $data;
-   public $next;
+  /* variable of node class */
+  public $data;
+  public $next;
 
-   /*constructor*/
-   function __construct()
-   {
-       $this->data=$data;
-       $this->next=null;
+  /*create the constructer function to initialize the varilables at runtime */
+  function __Construct($data,$next)
+  {
+      $this->data = $data;
+      $this->next = $next;
    }
 }
+?>

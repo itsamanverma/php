@@ -1,116 +1,103 @@
 <?php
-
 /**********
  *Helper functions for the implementations of Stack
  *@authour amanverma
  *@version 2.0
  *Date 11/02/2019
  */
-class Node
-{
-    /**
-     *  Link to next node
-     */
-    public $next;
-    /*
-     *Data to hold
-     */
-    public $data;
-    /**
-     * Node constructor
-     */
-    public function __construct($data)
-    {
-        $this->data = $data;
-        $this->next = null;
-    }
-}
 class Stack
 {
-    /**
-     * top value
-     */
-    public $top;
-    /**
-     * size of the stack intially
-     */
-    private static $size = 0;
-    /**
-     * function for adding the elements to the stack
-     */
-    public function push($item)
+    public static $max = 1000;
+    public $top = -1;
+    public  $arr = null;
+ 
+    /* constructor for initializing the values */
+    public function __construct()
+    { 
+        /* initializing an array with fixed size */
+        $this->arr = new SplFixedArray(Stack::$max);
+        $this->top = -1; 
+    } 
+ 
+    /* function to push the data in the stack requires data */
+    public function push($data)
     {
-        //$iteam;
-        $new_node = new Node($item);
-        /**
-         * checking the stack and inserting the data
-         */
-        if ($this->top == null) {
-            $this->top = $new_node;
-        } else {
-            $new_node->next = $this->top;
-            $this->top = $new_node;
+        if($this->top >(Stack::$max-1))
+        {
+            echo "stack overflow\n";
         }
-        //echo "top->data";
-        /**
-         * increases the size
-         */
-        self::$size++;
+        else
+        {
+            /*pushing data to top*/
+            $this->arr[++$this->top] = $data;
+            echo "$data pushed into stack\n";
+        }
     }
+ 
     /**
-     * function for removing r deleting the elements from the stack
+     * Function to remove the data from the stack 
+     * @return data the data last stored 
      */
     public function pop()
     {
-        if ($this->top == null) {
-            /**
-             * throws exception is stack is empty
-             */
-            echo("Stack is Empty..! \n");
+        if($this->top<0)
+        {
+            echo("Stack is UnderFlow..!");
+            return -1;
         }
-        $val = $this->top->data;
-        $this->top = $this->top->next;
-       // echo"from pop\n";
-        self::$size--;
-        return $val;
+        else
+        {
+            /* removed from top */
+            $x = $this->arr[$this->top--];
+            return $x;
+        }
     }
-    /**
-     * function to display the data
-     */
-    public function display()
+ 
+    /** function to return the last data stored **/
+    public function peek()
     {
-        $current = $this->top;
-        if ($current == null) {
-            echo("Stack is Empty..! \n");
+        if($this->top<0)
+        {
+            echo("stack is UnderFlow");
+            return -1; 
         }
-        while ($current != null) {
-            echo $current->data . " ";
-            $current = $current->next;
+        else
+        {
+            /* returns top data */
+            $x = $this->arr[$this->top];
+            return $x;
         }
     }
+ 
     /**
-     * function to return the size of stack
-     */
-    public function size()
-    {
-        return self::$size;
-    }
-    /**
-     * function to check stack is empty r not
+     * function to check if the stack is emtpty or not
      */
     public function isEmpty()
     {
-        return $this->top == null;
+        if($this->top < 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
-    /**
-     * function to get peek number
+ 
+     /**
+     * function to return the size of the stack
+     * @return size of the stack
      */
-    public function peek()
+    public function size()
     {
-        if (!$this->isEmpty()) {
-            return $this->top->data;
-        } else {
-            throw new RuntimeException("Stack is Empty..! \n");
+        if($this->top < 0)
+        {
+            return 0;
+        }
+        else
+        {
+            return ($this->top+1);
         }
     }
 }
+?>
