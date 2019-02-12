@@ -1,0 +1,22 @@
+{"account":
+    [
+        {
+        "name":"Shift",
+        "price":1110,
+        "quantity":20
+        },
+        {
+        "name":"Shift",
+        "price":150,
+        "quantity":9
+        }
+        ],
+        "stack":
+        [" bought"," bought"," sold"," bought"],
+        "queue":[
+            "20 Shift shares bought at 05:02:09 Mon 04\/02\/19",
+            "5 Skoda shares bought at 12:03:14 Wed 06\/02\/19",
+            " shares sold at 12:09:08 Wed 06\/02\/19",
+            "5 shares bought at 12:12:12 Wed 06\/02\/19"
+            ]
+        }
