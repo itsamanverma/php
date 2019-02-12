@@ -24,7 +24,7 @@ class Queue
   
   }
   
-  /**
+    /**
      * Function to check if the queue is empty or not
      * @return boolean true of false
      */
@@ -39,20 +39,20 @@ class Queue
      */
      public function enqueue($value)
     {
-    $oldback = $this->back;
+    $oldback = $this->rear;
     /* last pointing to new node */
-    $this->back = new Element(); 
-    $this->back->value = $value;
+    $this->rear = new Element(); 
+    $this->rear->value = $value;
     if($this->isEmpty())
     {
-      //if empty both first and last point to the new node
-      $this->front = $this->back;
+      /* if empty both first and last point to the new node */
+      $this->front = $this->rear;
       $this->size++; 
     }
     else
     {
-      //else last point to new node
-      $oldback->next = $this->back;
+      /* else last point to new node */
+      $oldback->next = $this->rear;
       $this->size++; 
     }
   }
