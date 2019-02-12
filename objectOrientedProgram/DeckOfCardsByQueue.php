@@ -7,8 +7,8 @@
  * @version 2.0
  * Date 08/01/2019
  */
-    require('Utility.php');
-    require('Queue.php');
+    include('Utility.php');
+    include('Queue.php');
     class card
     {
     /* variables to store properties od card */

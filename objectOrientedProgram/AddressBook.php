@@ -11,14 +11,14 @@ include_once 'AddressBookData.php';
 class Person extends Contact
 {
 }
-/**
- * function to create the person object asked by the user.
- * @param : details of the person stored to the AddressBook.json in array from.
- */
-function createContact(&$addressBook)
-{
-/* creating the object.*/
-/* takes user input for person object */
+  /**
+   * function to create the person object asked by the user.
+   * @param : details of the person stored to the AddressBook.json in array from.
+   */
+   function createContact(&$addressBook)
+   {
+   /* creating the object.*/
+   /* takes user input for person object */
     $person = new Contact();
     echo "Enter Firstname \n";
     $fName = Utility::String_input();
@@ -108,18 +108,23 @@ function search($arr)
 /**
  * function to print the person details to the addressbook.json file as a mailing format
  */
-function printBook($arr)
+function printBook($mainarr)
 {
     try {
-        if ($arr == null) {
+        if ($mainarr == null) {
             throw new Exception("Book is empty\n");
         } else {
-            foreach ($arr as $person) {
-                $i = 1;
-                echo sprintf(" \tName : %s %s\n\tCity : %s\n\taddress : %s\n\tstate : %s\n\tpinCode - %u\n\tphoneNo- %u\n\n", $person->fName, $person->lName, $person->address, $person->city, $person->state, $person->pinCode, $person->phoneNo);
-            }
+            // foreach ($mainarr as $arr) {
+                for($i=0;$i<count($mainarr);$i++){
+                    // $i = 1;
+                    $mainarr1 =$mainarr[$i];
+                    echo sprintf("\tfName : %s :\n\tlName : %s\n\tCity : %s\n\taddress : %s\n\tstate : %s\n\tpinCode - %u\n\tphoneNo- %u\n\n", $mainarr1->fName, $mainarr1->lName,  $mainarr1->state, $mainarr1->city,$mainarr1->address, $mainarr1->pinCode, $mainarr1->phoneNo);
+    
+
+                }
+            // }
         }
-    } catch (Exception $e) {
+        }catch (Exception $e) {
         echo $e->getMessage();
     }
 }
@@ -202,7 +207,7 @@ function option($addressBook)
             option($addressBook);
             break;
         case 5:
-            printBook($addressBook[0]);
+            printBook($addressBook);
             break;
     }
 }
