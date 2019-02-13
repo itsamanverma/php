@@ -161,8 +161,12 @@ function save($addressBook)
  */
 function option($addressBook)
 {
-    echo "\nEnter\t1 to add contact\n\t2 Edit Contact\n\t3 Delete Contact\n\t4 sort\n\t5 Display\n";
-    $ch = Utility::getInt();
+    echo "\tEnter 1 to add contact\n\t";
+    echo "enter 2 Edit Contact\n\t";
+    echo "enter 3 Delete Contact\n\t";
+    echo "enter 4 sort\n\t";
+    echo "enter 5 Display\n\t";
+    $ch = Utility::getInteger();
     switch ($ch) {
         case '1':
             createContact($addressBook);
