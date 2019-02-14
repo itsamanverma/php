@@ -14,7 +14,7 @@ class QNode
      * Create the Construct Function
      * @param $data shows the data of Node  
      */
-    function QNode($data)
+    function __construct($data)
     {
         $this->data = $data;
         $this->next = null;

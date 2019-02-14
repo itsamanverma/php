@@ -1,6 +1,5 @@
 <?php
 /**
-* The Inventory Manager will use InventoryFactory to create Inventory Object from JSON.
 * The InventoryManager will call each Inventory Object in its list to calculate 
 * the Inventory Price and then call the Inventory Object to return the JSON String.   
 * @author amanverma
@@ -26,7 +25,7 @@ class inventoryDataManagement extends inventory
         public function writeJson($file){
         $inventory = new inventoryDataManagement();
         echo "enter no of inventories\n";
-        $no = Utility::getInt();
+        $no = Utility::getInteger();
         for($i=0;$i<$no;$i++){
             // echo "enter category\n"; 
             // $cat = Oops::getString();
@@ -35,7 +34,7 @@ class inventoryDataManagement extends inventory
             $name = Utility::String_input();
             $inventory->setName($name);
             echo "enter weight\n";
-            $weight = Utility::getInt();
+            $weight = Utility::getInteger();
             $inventory->setWeight($weight);
             echo "enter price\n";
             $price = Utility::getDouble();

@@ -44,7 +44,6 @@ function choice($account)
                         Utility::printAccount($account);
                         echo "\n";
                         break;
- 
             case 2 :
                         /*calling function to buy a share form Utility and subtract the amount to user account*/
                         $account = Utility::buy($account);

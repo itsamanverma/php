@@ -29,7 +29,7 @@ $phNum = Utility::getInteger();
 $str = preg_replace($regex[2],$phNum,$str);
 
 /*replace any date in the Format xx/xx/xxxx*/
-$date = date();
+$date = date("d/m/y");
 $str = preg_replace($regex[3],$date,$str);
 echo("\n");
 echo($str);
