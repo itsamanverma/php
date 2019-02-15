@@ -15,8 +15,8 @@ class MobileSingleton
     /**
      * memeber functions of MobileSingleton class
      */
-    private $company = 'SamSung';
-    private $model = 'SamSung C7Pro';
+    private $company;
+    private $model;
 
     /**
      * private static variable ie the only instance of the class
@@ -27,21 +27,23 @@ class MobileSingleton
     /**
      * private constructor to restrict instantiation of the class from other classes
      */
-    private function __construct()
+    private function __construct($company,$model)
     {
+        $this->company = $company;
+        $this->model   = $model; 
     }
 
     /**
      * Static Function of Lazy Initialization that returns the instance of the class
      * @return mobile instance of the MobileSingleton class
      */
-    public static function borrowMobile()
+    public static function borrowMobile($company,$model)
     {
         if (false == self::$status) {
         /*checking the instance of that class present or not */
             if (null == self::$mobile) {
             /*if no instance of that class found the create the instance of class */
-                self::$mobile = new MobileSingleton();
+                self::$mobile = new MobileSingleton($company,$model);
             }
             self::$status = true;
         /* return the object of that class */
@@ -56,7 +58,7 @@ class MobileSingleton
      * create the function return the status of phone 
      * @return if phone is returned,the variable is set to False
      */
-    function returnMobile()
+    function returnMobile(MobileSingleton $mobileReturned)
     {
         /* if mobile is returned the variable is set to false */
         self::$status = false;

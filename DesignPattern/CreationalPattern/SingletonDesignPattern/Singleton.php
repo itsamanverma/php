@@ -11,31 +11,35 @@
  *require following to work
  */
 require_once('MobileBorrower.php');
-//require_once('Utility.php');
+require_once('/home/admin1/Desktop/BridgelabzProgram/DesignPattern/Utility.php');
 /**
  *testing the singleton implementation
  */
+class Singleton
+{
+    function main()
+    {
 echo "\n SINGLETON PATTERN\n\n";
 
-// echo("enter the Company name\n");
-// $company = Utility::String_input();
-// echo("enter the model name\n");
-// $model = Utility::String_input();
+echo("enter the Company name\n");
+$company = Utility::String_input();
+echo("enter the model name\n");
+$model = Utility::String_input();
 /**
  *instatiating MobileBorrower class
  */
-$mobileBorrower1 = new MobileBorrower();
-$mobileBorrower2 = new MobileBorrower();
+$mobileBorrower1 = new MobileBorrower($company,$model);
+$mobileBorrower2 = new MobileBorrower($company,$model);
  
 /* First borrower borrowing the mobile */
-$mobileBorrower1->borrowMobile();
+$mobileBorrower1->borrowMobile($company,$model);
 echo "First borrower making request to borrow the mobile\n";
 echo "First borrower's mobile with Company and Model: \n";
 /* getting the model and company details */
 echo $mobileBorrower1->getCompanyAndModel() . "\n\n";
  
 /* Second borrower borrowing the mobile */
-$mobileBorrower2->borrowMobile();
+$mobileBorrower2->borrowMobile($company,$model);
 echo "Second borrower making request to borrow the mobile\n";
 echo "Second borrower's mobile with Company and Model: \n";
 /* getting the model and company details */
@@ -46,7 +50,7 @@ echo "First borrower returned the mobile to Company\n\n";
 $mobileBorrower1->returnMobile();
  
 /* Second borrower again borrowing the mobile */
-$mobileBorrower2->borrowMobile();
+$mobileBorrower2->borrowMobile($company,$model);
 echo "Second borrower again making a request to borrow the mobile afer first borrower returned it\n";
 echo "Second borrower's Company and Model: \n";
 /* getting the model and company details */
@@ -64,4 +68,8 @@ print_r($properties);
 $defaults = $reflector->getDefaultProperties();
 echo "printing properties of class\n";
 print_r($defaults);
+
+    }
+}
+Singleton::main();
 ?>
