@@ -22,7 +22,7 @@ class MobileSingleton
      * private static variable ie the only instance of the class
      */
     private static $mobile = null;
-    private static $isLoanedOut = false;
+    private static $status = false;
 
     /**
      * private constructor to restrict instantiation of the class from other classes
@@ -37,13 +37,13 @@ class MobileSingleton
      */
     public static function borrowMobile()
     {
-        if (false == self::$isLoanedOut) {
+        if (false == self::$status) {
         /*checking the instance of that class present or not */
             if (null == self::$mobile) {
             /*if no instance of that class found the create the instance of class */
                 self::$mobile = new MobileSingleton();
             }
-            self::$isLoanedOut = true;
+            self::$status = true;
         /* return the object of that class */
             return self::$mobile;
         } else {
@@ -59,7 +59,7 @@ class MobileSingleton
     function returnMobile()
     {
         /* if mobile is returned the variable is set to false */
-        self::$isLoanedOut = false;
+        self::$status = false;
     }
 
     /**
