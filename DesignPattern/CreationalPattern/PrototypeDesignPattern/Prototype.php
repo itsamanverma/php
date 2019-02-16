@@ -1,5 +1,4 @@
 <?php
-
 /********************************************************************************************
  * Purpose  : Program Shows The Implementation of FActory desingn pattern in php
  * File Name: Prototype.php
@@ -38,4 +37,6 @@ require_once('SubObject.php');
     /* printing original object */ 
     echo "no of object 1 instance variable = " . $obj2->object1->instance . "\n";
     echo "no of object 2 instance variable = " . $obj2->object2->instance . "\n";
+
+    echo("<<!!!!TESTING END!!!!>>");
 ?>
