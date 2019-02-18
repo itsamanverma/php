@@ -1,5 +1,4 @@
 <?php
-
 /********************************************************************************************
  * Purpose  : Use Singleton Pattern to create a Book and Author deatils borrow or return by
  *           Book Borrower.
@@ -17,12 +16,12 @@ require_once('/home/admin1/Desktop/BridgelabzProgram/DesignPattern/Utility.php')
  */
 class Singleton
 {
-    function main()
+    static function main()
     {
 echo "\n SINGLETON PATTERN\n\n";
 
 echo("enter the Company name\n");
-$company = Utility::String_input();
+$company =Utility::String_input();
 echo("enter the model name\n");
 $model = Utility::String_input();
 /**
@@ -68,7 +67,6 @@ print_r($properties);
 $defaults = $reflector->getDefaultProperties();
 echo "printing properties of class\n";
 print_r($defaults);
-
     }
 }
 Singleton::main();

@@ -11,7 +11,6 @@
   {
     public $object1;
     public $object2;
-
     /**
      * create the clone function to clone the existing Object 
      */

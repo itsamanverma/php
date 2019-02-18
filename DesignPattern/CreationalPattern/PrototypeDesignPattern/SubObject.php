@@ -20,7 +20,8 @@ class SubObject
         $this->instance = ++self::$instances;
     }
     /**
-     * 
+     * create the clone function to clone the existing Object
+     * clone function use one member variable 
      */
     public function __clone()
     {
