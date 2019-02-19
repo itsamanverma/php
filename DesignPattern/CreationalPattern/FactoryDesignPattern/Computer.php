@@ -22,12 +22,4 @@ interface IComputer
     public function setCPU($cpu);
     public function getCPU();
 
-    // /**
-    //  * create the function __toString() to represent the Object into string formate
-    //  * @return the derised output of Object into String Format
-    //  */
-    // function __toString()
-    // {
-    //    return "RAM =".$this->getRAM()." ,"."HDD =".$this->getHDD()." ,"."CPU =".$this->getCPU();  
-    // }
 }
