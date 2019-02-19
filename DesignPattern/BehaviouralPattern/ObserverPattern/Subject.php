@@ -34,5 +34,5 @@ interface Subject
      * it has some abstract function named as register
      * @param Observer instance
      */
-    public function getUpdate(Observer $obj);
+    public function getUpdate();
 }

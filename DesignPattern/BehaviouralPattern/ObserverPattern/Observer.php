@@ -14,7 +14,7 @@ interface Observer
  /**
   * it has a some abstract function named Update
   */
-  public function update();
+  public function update(Subject $subject);
   /**
    * create the function for attach with subject to Observer
    * @param instance of subject
