@@ -1,0 +1,7 @@
+services:
+    worker_manager:
+        class: WorkerBundle\Workers\WorkerManager
+        arguments: ["@worker_discovery"]
+    worker_discovery:
+        class: WorkerBundle\Workers\WorkerDiscovery
+        arguments: ["%worker_namespace%", "%worker_directory%", "%kernel.root_dir%", "@annotation_reader"]
