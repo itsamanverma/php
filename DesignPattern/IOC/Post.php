@@ -6,8 +6,10 @@
  * @version   :- 1.0
  * @since     :-26/02/2019
  */
-
 namespace Model;
+require('CommentInterface.php');
+require('CommentService.php');
+
 /* create the implementation class named as Post which implements PostInterface,SplSubject*/
 
 class Post implements PostInterface, SplSubject
@@ -101,7 +103,8 @@ class Post implements PostInterface, SplSubject
         return $this->comments;
     }
     /**
-     * 
+     * create the function to add the Observer
+     * @param $observer
      */
     public function attach(SplObserver $observer)
     {
@@ -111,7 +114,10 @@ class Post implements PostInterface, SplSubject
         }
         return $this;
     }
-
+    /**
+     * create the function to remove Observer 
+     * @param $observer
+     */
     public function detach(SplObserver $observer)
     {
         $id = spl_object_hash($observer);
@@ -123,7 +129,9 @@ class Post implements PostInterface, SplSubject
         unset($this->observers[$id]);
         return $this;
     }
-
+    /**
+     * create the function to notify the observers(some of them)
+     */
     public function notify()
     {
         foreach ($this->observers as $observer) {
